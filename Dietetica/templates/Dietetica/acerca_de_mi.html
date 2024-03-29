@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de mí</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative; /* Agregamos posición relativa al contenedor para que la imagen se posicione correctamente */
+        }
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        /* Estilos para la imagen */
+        .profile-img {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 150px; /* Tamaño de la imagen */
+            border-radius: 50%; /* Borde redondeado */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Acerca de mí</h1>
+        <!-- Agregamos la imagen -->
+        <img src="{% static 'assets/Foto de perfil.jpeg' %}" alt="Foto de perfil" style="max-width: 200px; max-height: 200px;">
+        <p><span class="highlight">Nombre:</span> Nicolas.</p>
+        <p><span class="highlight">Apellido:</span> Gonzalez.</p>
+        <p><span class="highlight">Edad:</span> 24 años.</p>
+        <p><span class="highlight">Profesión:</span> soy estudiante de biotecnologia, estoy a 4 materias de recibirme y tambien estoy realizando mi tesis en quimica de acidos nucleicos.</p>
+        <p><span class="highlight">Intereses:</span> me gusta leer, el deporte y me interesaria mucho poder combinar el ambito de la programacion con mi carrera. Me gustaria poder comenzar a trabajar con Biopython asi que cualquier consejo, curso o lo que me puedan recomendar me vendria diez puntos (algun freecodecamp en donde seguir practicando python o si ya es de Biopython mejor).</p>
+        <p><span class="highlight">Experiencia:</span> actualmente trabajo en dos laboratorios. Uno en donde realizo mi tesis, antes mencionada, el laboratorio de quimica de acidos nucleicos y biotransformaciones en la Universidad Nacional de Quilmes. En el otro laboratorio trabajamos modificando plantas geneticamente.</p>
+        <p><span class="highlight">Pd:</span> realice este sitio porque mi familia tiene una dietetica entonces tenia algunas ideas para los modelos y las funciones.</p>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dietetica Almendra&Coco</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <style>
+        /* Aplicar color de fondo marrón claro a la barra de navegación */
+        .navbar {
+            background-color: #d2b48c; /* Marrón claro */
+        }
+        
+        /* Estilos para los botones de perfil y logout */
+        .btn-profile,
+        .btn-logout {
+            font-size: 14px; /* Tamaño de fuente más pequeño */
+            color: white; /* Texto blanco */
+            background-color: black; /* Fondo negro */
+            border-color: black; /* Borde negro */
+        }
+        
+        /* Estilos para el nombre de usuario */
+        .username {
+            color: white; /* Texto blanco */
+        }
+        </style>
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-lightbrown">
+            <div class="container px-4 px-lg-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-fill justify-content-between"> <!-- Utilizar clases de Bootstrap para distribuir equitativamente los elementos -->
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <p class="nav-link username">{{ user.username }}</p>
+                            </li>
+                            <li class="nav-item">
+                                <div class="text-center"><a href="{% url 'agregar_avatar' %}" class="nav-link"><img src="{{ request.session.avatar }}" height="40px" weight="40px"/></a></div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-success btn-profile" href="{% url 'editar_perfil' %}">Perfil</a>
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'Clientes' %}">Clientes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'Vendedores' %}">Vendedores</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{% url 'Productos' %}">Productos</a></li>
+                                        <li><a class="dropdown-item" href="{% url 'Productos_por_mayor' %}">Productos al por mayor</a></li>              
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'buscar_productos' %}">Buscar productos</a>
+                                </li>
+        
+                            </li>
+                            <li class="nav-item">
+                                <form action="{% url 'logout' %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary btn-logout">Logout</button>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="btn btn-success btn-profile" href="{% url 'login' %}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-success btn-profile" href="{% url 'registro' %}">Registrarse</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<!-- Header-->
+    <head>
+        <title>Almendra&Coco</title>
+    </head>
+    <body>
+        <img src="{% static 'assets/Almendra&Coco.png' %}" style="width: 100%; height: auto">
+    </body>
+    {% block contenido %}
+        <div style="background-color: #343a40; color: white;">
+            <!-- Contenido aquí con fondo oscuro -->
+        </div>
+    {% endblock contenido %}
+<!-- Footer-->
+<footer class="py-5 bg-lightbrown" style="background-color: #f5deb3 !important;">
+    <div class="container">
+        <p class="m-0 text-center text-black">Copyright Nicolas Gonzalez &copy; Almendra&Coco 2024</p>
+        <!-- Agrega el enlace "Acerca de mí" aquí -->
+        <a href="{% url 'acerca_de_mi' %}" class="text-center text-black">Acerca de mí</a>
+    </div>
+</footer>
+        <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+</html>

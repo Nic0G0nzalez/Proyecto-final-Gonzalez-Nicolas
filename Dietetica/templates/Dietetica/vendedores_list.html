@@ -1,0 +1,76 @@
+{% extends "Dietetica/index.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Vendedores</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+<div class="row">
+    <div class="col-md-4 text-center">
+        <img src="{% static 'assets/LeoDiCaprio.jpg' %}" alt="Leo Di Caprio" class="img-thumbnail" width="165">
+        <p>Leo Di Caprio. Estudiante de teatro, atiende nuestro local desde el 2023. En la entrevista comento que le gustaria dedicarse al cine</p>
+    </div>
+    <div class="col-md-4 text-center">
+        <img src="{% static 'assets/Davo.jpeg' %}" alt="Davo" class="img-thumbnail" width="200">
+        <p>Davo. Joven promesa de las ventas en dieteticas, por ahora maneja nuestras redes sociales y nuestro canal en Twich.</p>
+    </div>
+    <div class="col-md-4 text-center">
+        <img src="{% static 'assets/Messi.jpg' %}" alt="Lionel Messi" class="img-thumbnail" width="200">
+        <p>Lionel Andres Messi. Nuestro mejor vendedor, si hubiese un balon de oro para vendedores el tendria, minimo, 8.</p>
+    </div>
+</div>
+
+<table>
+    <tr>
+        <td width="200"><h2>Vendedores</h2></td>
+        <td>
+            <a
+            href="{% url 'vendedores_create' %}"
+            class= "btn btn-primary btn-sen"
+            ><i class= "fa fa-plus fa-lg" title="crear"></i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Nombre del vendedor</th>
+            <th>Apellido</th>
+            <th>DNI</th>
+            <th>email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for v in vendedores_list  %}
+        <tr>
+            <td>{{ v.id }}</td>
+            <td>{{ v.nombre }}</td>
+            <td>{{ v.apellido }}</td>
+            <td>{{ v.DNI }}</td>
+            <td>{{ v.email }}</td>
+            <td>
+                <a
+                  href="{% url 'vendedores_update' v.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'vendedores_delete' v.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>            
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido %}

@@ -1,0 +1,16 @@
+{% extends "Dietetica/index.html" %}
+
+{% block titulo %}
+<h1 class="mb-5">Buscar productos</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+<form action="{% url 'encontrar_productos' %}" method="GET">
+    {% csrf_token %}
+    <p>Ingrese producto a buscar: <input tipe="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar">
+
+</form>
+
+{% endblock contenido %}
+

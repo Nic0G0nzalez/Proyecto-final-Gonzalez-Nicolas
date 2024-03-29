@@ -1,0 +1,109 @@
+{% extends "Dietetica/index.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">Productos</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+
+
+<div class="row mt-3">
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Almendras.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 250px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Mani.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 400px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Nueces.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 300px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Pistachos.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 300px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Avellanas.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 300px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Castanas.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 300px; height: auto;">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="image-container">
+            <img src="{% static 'assets/CuentaDNI.jpg' %}" class="img-thumbnail">
+        </div>
+        <p>Somos un comercio adherido a cuenta DNI, por eso tenemos reintegro en las compras realizadas los miércoles y jueves.</p>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Castanas.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 300px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Avellanas.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 300px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Pistachos.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 300px; height: auto;">    
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Nueces.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 300px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Mani.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 350px; height: auto;">
+    </div>
+    <div class="col-md-2 text-center">
+        <img src="{% static 'assets/Almendras.jpg' %}" class="img-thumbnail imagen-producto" style= "width: 250px; height: auto;">    
+    </div>
+</div>
+
+<table>
+    <tr>
+        <td width="200"><h2>Productos</h2></td>
+        <td>
+            <a
+            href="{% url 'productos_create' %}"
+            class= "btn btn-primary btn-sen"
+            ><i class= "fa fa-plus fa-lg" title="crear"></i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Cantidad (en gramos)</th>
+            <th>Precio (en pesos)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for p in productos_list  %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.cantidad_en_gramos}}</td>
+            <td>{{ p.precio_en_pesos}}</td>
+            <td>
+                <a
+                  href="{% url 'productos_update' p.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                </a>
+                <a
+                  href="{% url 'productos_delete' p.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                </a>                
+            </td>            
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock contenido %}
