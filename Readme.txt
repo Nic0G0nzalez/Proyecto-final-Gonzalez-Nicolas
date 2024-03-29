@@ -30,3 +30,5 @@ clave: Coder123
 
 usuario_test: Juan 
 clave: Verde123
+
+pd:en el video se creo otro usuario para demostrar la funcionalidad de la pagina.
